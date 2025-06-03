@@ -5,7 +5,7 @@ namespace App\DTO;
 use App\Entity\Product;
 use Symfony\Component\Serializer\Annotation\Ignore;
 
-class LowestPriceEnquiryDTO implements PromotionEnquiryInterface
+class LowestPriceEnquiry implements PromotionEnquiryInterface
 {
     #[Ignore]
     private ?Product $product;
@@ -96,12 +96,6 @@ class LowestPriceEnquiryDTO implements PromotionEnquiryInterface
     public function setPromotionName(?string $promotionName): void
     {
         $this->promotionName = $promotionName;
-    }
-
-
-    public function jsonSerialize(): array
-    {
-        return get_object_vars($this);
     }
 
     public function getProduct(): ?Product

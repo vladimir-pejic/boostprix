@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\DTO\LowestPriceEnquiryDTO;
+use App\DTO\LowestPriceEnquiry;
 use App\Entity\Promotion;
 use App\Filter\PromotionsFilterInterface;
 use App\Repository\ProductRepository;
@@ -38,9 +38,9 @@ class ProductsController extends AbstractController
             ], $request->headers->get('force_fail'));
         }
 
-        /** @var LowestPriceEnquiryDTO $lowestPriceEnquiry */
+        /** @var LowestPriceEnquiry $lowestPriceEnquiry */
         $lowestPriceEnquiry = $serializer->deserialize(
-            $request->getContent(), LowestPriceEnquiryDTO::class, 'json'
+            $request->getContent(), LowestPriceEnquiry::class, 'json'
         );
 
         $product = $this->repository->find($id); // TODO: Add error handling for entire service
