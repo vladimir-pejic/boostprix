@@ -18,19 +18,19 @@ class Product
     #[ORM\Column]
     private ?int $price = null;
 
-    /**
-     * @var Collection<int, ProductPromotion>
-     */
-    #[ORM\OneToMany(targetEntity: ProductPromotion::class, mappedBy: 'product')]
-    private Collection $productPromotions;
-
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    public function __construct()
-    {
-        $this->productPromotions = new ArrayCollection();
-    }
+//    /**
+//     * @var Collection<int, ProductPromotion>
+//     */
+//    #[ORM\OneToMany(targetEntity: ProductPromotion::class, mappedBy: 'product')]
+//    private Collection $productPromotions;
+
+//    public function __construct()
+//    {
+//        $this->productPromotions = new ArrayCollection();
+//    }
 
     public function getId(): ?int
     {
@@ -49,35 +49,35 @@ class Product
         return $this;
     }
 
-    /**
-     * @return Collection<int, ProductPromotion>
-     */
-    public function getProductPromotions(): Collection
-    {
-        return $this->productPromotions;
-    }
-
-    public function addProductPromotion(ProductPromotion $productPromotion): static
-    {
-        if (!$this->productPromotions->contains($productPromotion)) {
-            $this->productPromotions->add($productPromotion);
-            $productPromotion->setProduct($this);
-        }
-
-        return $this;
-    }
-
-    public function removeProductPromotion(ProductPromotion $productPromotion): static
-    {
-        if ($this->productPromotions->removeElement($productPromotion)) {
-            // set the owning side to null (unless already changed)
-            if ($productPromotion->getProduct() === $this) {
-                $productPromotion->setProduct(null);
-            }
-        }
-
-        return $this;
-    }
+//    /**
+//     * @return Collection<int, ProductPromotion>
+//     */
+//    public function getProductPromotions(): Collection
+//    {
+//        return $this->productPromotions;
+//    }
+//
+//    public function addProductPromotion(ProductPromotion $productPromotion): static
+//    {
+//        if (!$this->productPromotions->contains($productPromotion)) {
+//            $this->productPromotions->add($productPromotion);
+//            $productPromotion->setProduct($this);
+//        }
+//
+//        return $this;
+//    }
+//
+//    public function removeProductPromotion(ProductPromotion $productPromotion): static
+//    {
+//        if ($this->productPromotions->removeElement($productPromotion)) {
+//            // set the owning side to null (unless already changed)
+//            if ($productPromotion->getProduct() === $this) {
+//                $productPromotion->setProduct(null);
+//            }
+//        }
+//
+//        return $this;
+//    }
 
     public function getName(): ?string
     {
